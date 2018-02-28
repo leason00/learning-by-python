@@ -112,7 +112,15 @@ class UnorderedList:
         :return:
         """
         def reverse(pre_node, node):
-            pass
+            if pre_node is self.head:
+                pre_node.set_next(None)
+            if node:
+                next_node = node.get_next()
+                node.set_next(pre_node)
+                return reverse(node, next_node)
+            else:
+                self.head = pre_node
+        return reverse(self.head, self.head.get_next())
 
     def __len__(self):
         pre = self.head
@@ -150,4 +158,5 @@ if __name__ == "__main__":
     single_link_list.insert(1, 55)
     print("insert index = 1 -- data = 55")
     print(single_link_list)
-
+    single_link_list.__reversed__()
+    print(single_link_list)
