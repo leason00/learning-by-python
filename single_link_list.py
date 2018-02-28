@@ -36,6 +36,27 @@ class UnorderedList:
         temp.set_next(self.head)
         self.head = temp
 
+    def add_order(self, item):
+        """
+        有序链表添加
+        :param item:
+        :return:
+        """
+        current = self.head
+        pre = None
+        state = False
+        while not state:
+            if item <= current.get_data() and pre is None:
+                state = True
+            if item < current.get_data():
+                state = True
+            else:
+                pre = current
+                current = current.get_next()
+        temp = Node(item)
+        temp.set_next(current)
+        pre.set_next(temp)
+
     def get(self, index):
         # 支持负数
         index = index if index >= 0 else len(self) + index
