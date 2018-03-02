@@ -43,8 +43,7 @@ class SortedDict(dict):
             return self.get(self.list[0])
 
     def __iter__(self):
-        for key in self.list:
-            yield key, self.get(key)
+        return iter(self.list)
 
     def __str__(self):
 
@@ -64,8 +63,8 @@ if __name__ == "__main__":
     obj["test1"] = "test1"
     obj["test2"] = "test2"
     obj["test3"] = "test3"
-    for key, value in obj:
-        print(key, value)
+    for key in obj:
+        print(key)
     print("test")
     del obj["test2"]
     print(obj)
